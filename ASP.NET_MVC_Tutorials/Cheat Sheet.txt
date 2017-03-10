@@ -1,0 +1,1088 @@
+Data Types (CS-ASP_007)
+=======================
+Comments: // Single line 
+		  /* Multiline */
+
+string: alphanumeric (defaults to "")
+int: -2 billion to 2 billion (defaults to 0)
+double: fractional value (defaults to 0.0)
+bool: true or false (defaults to false)
+
+More info: http://is.gd/data_types
+
+
+Data Type Conversion (CS-ASP_008)
+=================================
+Implicit conversions - smaller type to larger type without data loss, "upcasting" 
+
+Explicit conversions - require developer intervention, possibility of data loss, "downcasting"
+					   either in form of cast or using helper method
+					  
+Casting numbers:
+int myInteger = (int)myDouble;
+
+Numbers to strings:
+string myString = myInteger.ToString();
+
+String to Numbers:
+int myInteger = int.Parse(myString);
+
+More: http://is.gd/datatype_conversion
+
+
+Arithmetic Operators (CS-ASP_009)
+=================================
+= NOT equality, it's assignment
+
+Math Operators: +, - , *, /
+
+Addition Assignment
+total = total + 5;
+total += 5;
+
+Increment Operator: i++;
+Decrement Operator: i--;
+
+Beware of order of precendence (use parentheses)
+Beware of downcasting (you'll lose precision)
+Beware of overflow (user bigger types)
+
+To make overflow throw an exception:
+
+checked {
+	// some arithmetic operation
+	// that could potentially overflow
+}
+
+
+C# Synatx (CS-ASP_010)
+======================
+Operands - variable names, object/server control names, literals - "Nouns" (you name these)
+
+Operators - "Verbs, they act on the operands"
+
+Expressions - One or more operands and zero or more operators that evaluate to a single value
+
+Statements - A complete instruction, assignment of an expression to a variable, increment/decrement, etc. (sentence)
+
+Statements must end in a semi-colon ;
+Whitespace is ignored (make it more human readable)
+
+
+Conditional Statements (CS-ASP_011)
+===================================
+= Assignment
+== Equality
+
+if (a == b)
+{
+   // executes when the expression is fales
+}
+
+... or ... evaluate other mutually exclusively options:
+
+if (a == b) { // some code }
+else if (a == c) { // some code }
+else if (a == d) { // some code }
+else { // catch all }
+
+Checkbox Server Control = Checked prop is bool
+RadioButton Server Control = GroupName prop groups them together, check prop is bool
+
+
+Ternary Conditional Operator (CS-ASP_012)
+=========================================
+Shortcut for evaluating expression and returning a result.
+
+result = (a == b) ? "Equal" : "Not Equal";
+
+
+Comparison and Logical Operator (CS-ASP_013)
+============================================
+Comparison Operators - Used for conditional statements
+
+==
+!=
+< >
+<= => 
+!someBooleanValue - means NOT true
+
+
+Logical operators: Used to combine multiple expression / evaluation
+
+&& - AND
+|| - OR
+
+
+Combine with parentheses ( ) for order of precedence
+
+
+Working with Dates and Times (CS-ASP_014)
+============================================
+Creating new DateTime objects
+
+DateTime myDateTime = DateTime.Now;
+DateTime myDateTime = DateTime("9/21/1993");
+
+Formatting ... many options:
+
+myDateTime.To______() 
+
+
+Retrieving Parts:
+
+myDateTime.Year // int
+myDateTime.Hour // int
+myDateTime.DayofWeek // "Monday"
+myDateTime.DayofYear // int 175
+
+DateTime Math:
+
+myDateTime.AddHour(3)
+myDateTime.AddMinute(-5)
+
+"Chaining" = using multiple helper methods together with the dot operators
+
+myDateTime.AddHour(3).AddMinute(-5).ToString()
+
+
+Working with Spans of Time(CS-ASP_015)
+============================================
+Create and Initialize New Timespans
+
+// Days.Hours:Minutes:Seconds.Milliseconds
+TimeSpan myTimeSpan = TimeSpan.Parse("1.2:3:30.5");
+
+DateTime myBirthday = DateTime.Parse("9/21/1993");
+TimeSpan myAge = DateTime.Now.Subtract(myBirthday);
+
+Get Individual Parts:
+
+myAge.Hours
+myAge.Seconds
+
+...OR get TOTAL elapsed time as a double representing both the number of days/hours/etc.
+AND fractional values representing "leftovers".
+
+myTimeSpan.TotalDays // double
+myTimeSpan.TotalHours // double
+
+
+Formatting Strings(CS-ASP_019)
+==============================
+Concatenate Strings:
++, +=
+
+
+String Formatting:
+String.Format("Hello {0}. You are from {1}", "Bob", "Chicago")
+
+
+Formatting Numbers:
+String.Format("Reference Code: {0:000_000-0}", 1234567)
+Formatted number: 123_456_7
+
+
+Formatting Dates:
+http://is.gd/formattingdates
+String.Format("Reference Date: {0:ddd - MM/dd/yyyy}", someDate)
+Formatted date: Tue - 5/7/2017
+
+
+Formatting Currency:
+http://is.gd/formattingcurrency
+String.Format("Total: {0:C}", totalAmount)
+$50,000.00
+
+
+Single Dimensional Arrays(CS-ASP_021)
+==========================================
+Indexes vs. Elements
+Accessor vs. Stored Values
+
+Arrays are ZERO INDEXED
+
+Declaring Arrays:
+string[] my Array = new string[3];
+
+Declaring Initializing Arrays:
+string[] myArray = new string[3] {"Moe", "larry", "Curly"}
+
+Setting/Getting Values:
+string myString = myArray[1];	// Retrieves second element
+myArray[0] = myString; // Sets first element of array
+
+
+Multi-dimensional Arrays (CS-ASP_022)
+=====================================
+Same as single dimensional, but just requires more indexes (dimensions) to get to the element you want
+
+double[,] myArray = new double[2,3];	// Contains 6 elements
+int[,,] rubixCube = new int[3,3,3]	// Contains 27 elements
+
+rubixCube[0,1,2] = 42;
+myInteger = rubixCube[0,1,2];
+
+
+Changing the Length of an Array (CS-ASP_023)
+===========================================
+Arrays are immutable = cannot be changed in memory
+HOWEVER the .NET Framework provides helper methods to resize an array...
+
+A new array is created of the new size and the old one's contents are copied into it.
+
+Array.Resize(ref myArray, myArray.Length + 1);
+
+// Get the highest Index:
+int highestIndex = myArray.GetUpperBound(0);
+
+// 0 = dimension we want to retrieve upper boundary for
+
+// Arrays also have other helper methods:
+myArray.Sum()
+myArray.Min()
+myArray.Max()
+myArray.Average()
+Array.Sort()
+Array.Reverse()
+
+
+Looping with the for Iteration Statement (CS-ASP_026)
+=====================================================
+// For loop Snippet: 
+for[tab][tab]
+
+Then you can just tab through the highlighted sections and change what is needed
+
+for (int i=0; i<10; i++){
+	// Your code here
+}
+
+i - any variable name
+
+1st part - counter declaration, can be initialized to any number
+2nd part - condition, can be any expression that equates to a bool
+3rd part - increment i++/ decrement i--, can step more than 1 using +=,
+
+string[] names = new string[] { "Wolverine", "Cyclops", "Professor X", "Phoenix" };
+
+for (int i=0; i<names.Length; i++){
+	// can search for a specific value
+	
+	if (names[i] == "Professor X"){
+		// Do something here
+		// Can break out of additional iterations if you need to
+		break;
+	}
+}
+
+
+Looping with the for Iteration Statement (CS-ASP_027)
+=====================================================
+Random random = new Random();
+// random.Next(lowerBounds, upperBounds)
+random.Next(1, 100);	// Returns value between 1 and 100
+
+
+// If someExpression is already false, this will never execute
+while (someExpression) {
+	// Code that would affect whether someExpression is true or false
+}
+
+
+// If someExpression is already false, this will run once. Will ALWAYS execute at least once
+do {
+	// Code that would affect whether someExpression is true or false
+} while (someExpression)
+
+
+Creating Overloaded Mthods (CS-ASP_031)
+=======================================
+Different METHOD SIGNATURE, but same basic function.
+METHOD SIGNATURE ... the number and type of input parameters
+
+BUT can have different return types
+
+Creating Optional Parameters (CS-ASP_032)
+=========================================
+Optional parameters provide default values when you define the method.
+So if you don't supply a value, the default will be used.
+
+private void myMethod(string myRequiredParam,
+					  int myOptionalParam = 1,
+					  int myOtherOptionalParam = 5);
+
+// Can be called ...
+
+myMethod("Hello Required Param!");
+
+// or ...
+
+myMethod("Hello Required Param!", 100);
+
+// or ...
+
+myMethod("Hello Required Param!", 100, 500);
+
+// BUT you CANNOT skip an optional parameter!
+
+myMethod("Hello Required Param!", , 500); // ERROR
+
+
+Passing Named Arguments Into Input Parameters (CS-ASP_033)
+==========================================================
+Allow us to send in parameter arguments OUT OF ORDER!
+We just prefix the input parameter argument with the name of the 
+parameter we're passing in, a colon, then the value:
+
+myMethod(myOtherOptionalParam: 500, myRequiredParam: "Hello required param", myOptionalParam: 100)
+
+
+Creating Methods with Output Parameters (CS-ASP_034)
+====================================================
+Allows you to return a value the normal way AND return a value via a method parameter:
+
+private bool myMethod(string myRequiredParam, out int myOptionalParam) { }
+
+int myValue = 0;
+if (myMethod("Some required text", out myValue)) return "Hello World!");
+
+
+Manipulating Strings (CS-ASP_035)
+=================================
+// Escape double quotes
+string myString = "This is a double quote: \".";
+
+
+// Accessing a specific char:
+myString[2]
+
+
+// StartsWith(), EndsWith(), Contains():
+Will all check to see if a given string has a set of characters beginning, end
+or somewhere inside. Will return true/false
+
+
+// IndexOf():
+Find the index for one string inside of another string.
+
+int myIndex = myString.IndexOf("howdy");
+
+
+// Insert(), Remove():
+Insert will add characters starting at a given index
+
+Remove will remove characters starting at a given index, and all the way through 
+the length you input.
+
+
+// Substring():
+Retrieves characters beginning at a given index all the way through the length you input.
+
+
+// Trim(), TrimStart(), TrimEnd():
+Removes space characters both, at the start, or just at the end of the string.
+
+
+// PadLeft(), PadRight():
+Specifies length for string and a character to pad the string with IF its length
+is less than the specified length.
+
+myString = someValue.PadLeft(10, '#');
+
+NOTE: we're inputting a char NOT string, so we're using '' instead of "".
+
+
+// ToUpper(), ToLower()
+IMPORTANT: Compares two strings regardless of the case, because in C#, 2 strings
+with different cases are NOT equal!
+
+
+// Replace()
+Replaces every occurance of one string with some other string.
+
+myString.Replace("$$$$", myValue);
+
+
+// Split()
+Takes string and splits it into many strings. Will store them in string array
+
+string[] names = myString.Split(';');
+
+
+// Concatenating strings, immutability
+StringBuilder - memory efficient way of concatenating strings.
+
+
+Introduction to Classes and Objects (CS-ASP_036)
+================================================
+Class is a code block that defines a data type.
+An object is an instance of a Class.
+
+Metaphors:
+Blueprint vs. Houses
+Recipe vs. Cupcakes
+Pattern vs. Blue jeans
+Cookie Cutter vs. Cookies
+
+Classes have members, like Properties and Methods.
+
+Properties define the attributes that are set on an instane of the class /
+represent the "state" of the object. You can set (assign) and get (retrieve)
+property values on an object.
+
+Methods define actions an instance of a class can perform, usually on the 
+object instance itself. 
+
+You can create and instance of a class, using the "new" keyword. Think: Factory
+
+You can access members of an object by using the (.) operator.
+
+Conceptually, classes are delegated a responsibility in the system or represent
+some domain concept in the system.
+
+CLasses are ultimately custom data types, more complex than simple data types (int, double, etc.)
+Therefore, you can use them anywhere you use other data types (like input parameters or 
+return values from a method)
+
+class Car {
+
+}
+
+Auto Implemented Properties - simple properties
+
+Shortcut:
+prop [tab] [tab] [enter] [enter]
+
+"this" keyword - Access a member of the current instance of the class.
+
+public void MyMethod()
+{
+	this.Year =1976;
+}
+
+
+Creating Class Files, Creating Cohesive Classes and Code Navigation (CS-ASP_037)
+================================================================================
+Prefer more classes w/ narrowly defined responsibilities
+Prefer to put each class in its own file
+Prefer high cohesion - similarity / singleness of purpose of the class members
+
+To achieve high cohesion, rule of thumb: Try to make classes fit on one "screen" of your IDE
+(no scrolling required)
+
+
+Understanding Object References and Object Lifetime (CS-ASP_038)
+================================================================
+An object reference variable holds a reference to an instantiated object
+in the computer's memory.
+
+MyClass myObject;
+
+
+The new keyword creates an instance of the class and returns the address of 
+object in memory to the reference variable.
+
+myObject = new MyClass();
+
+
+More than one object reference variable can hold an address to the object in memory.
+
+MyClass = myOtherObjectReference = myObject;
+
+Each time a new reference is added, the reference count increases by one. Each time an object reference variable goes out of scope or is set to null, the reference count decreases by one.
+
+If the reference count is zero, the .NET Framework Runtime's Garbage Collector removes
+the object from memory at an indeterminate point in time in the future. You can take
+control of the finalization process and even handle events just before the object is removed. 
+See: "deterministic finalization".
+
+
+Understanding the .NET Framework and Compilation (CS-ASP_039)
+=============================================================
+The .NET Framework consists of:
+
+- Runtime (Common language runtime, CLR) "Protective bubble", manages memory, 
+protects user's machine, etc.
+
+- .NET Framework Class Library (FCL, Base Class Library, BCL) - thousands of classes
+built by Microsoft for every imaginable purpose.
+
+- Compilers (C# compiler, VB compiler) - turns your human readable source code into Microsoft Intermediate Language (MSIL, IL) and packaged into a .NET assmbly
+(.exe - executable, or .dll - class library)
+
+- Many other tools and features
+
+
+Initial compilation to Intermediate Language, then a second compilation 
+JIT - Just in TIme compilation - an optimized version of the assembly for 
+the specific hardware and software. Happens at first request on that computer.
+
+
+Understanding Namespaces and the Using Directive (CS-ASP_40)
+============================================================
+Namespaces disambiguate class names inside of class libraries or applications.
+
+So you MUST reference class names by their full name:
+
+System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+
+...or, you can employ a using directive at the top of the code file to instruct the compiler
+to look in those namespaces to find the class that is referenced.
+
+using System.Text;
+...
+StringBuilder sb = new StringBuilder();
+
+
+You MUST ALWAYS do this if the code you're writing is outside of the namespace of the class you want to use, even if it's in the same project.
+
+Default namespace defined in Project Properties (right-clicking on Project name in Solution Explorer, select Properties ...)
+
+
+Creating Class Libraries and Adding Reference to Assemblies (CS-ASP_041)
+========================================================================
+Class Library project - creates a .dll taht can be referenced in other projects.
+
+Add a Reference - the FCL is split into smaller assemblies, and you must reference the assemblies 
+that contain the parts of the library you want to use.
+
+Right-click project's References node in Solution Explorer, select Add Reference
+
+
+Accessibility Modifiers, Fields and Properties (CS-ASP_042)
+===========================================================
+Public - Class or member can be accessed by any code
+Private - Class or member can only be accessed by parent class
+Protected - Class or member can be accessed by parent class or derived class
+Internal - Class or member can only be accessed by code inside the same assembly
+
+Classes are INTERNAL by default
+Methods and properties are PRIVATE by default
+
+Encapsulation - hiding implementation behind public interfaces, reduces coupling, increases
+cohesion, plugability/reusability, maintainability, etc.
+
+
+Private fields have 2 purposes:
+(1) reference to object or variable that used for internal implementation of class
+(2) Hold the state of an object (properties of class), backing field for public property
+
+propfull [tab] [tab] 
+
+private int myField;
+property int MyProperty 
+{
+	get { return myField; }
+	set {
+		if (value > 100) 
+			myField = value;
+		else
+		// tell the caller that they can't do this		
+	}
+}
+Full property defnition and private fields to control access to private fields / state of object
+
+
+propg [tab] [tab]
+
+public int MyProperty { get; private set; }
+
+Restricts setting of property to just the class' internal implementation
+
+
+Creating Constructor Methods (CS-ASP_043)
+=========================================
+Constructors are called at the moment of instantiation. Used to put the new instance 
+of the class into a valid state.
+
+public class Foo
+{
+	public Foo()
+	{
+	...
+	}
+}
+Whether you define it or not, there's a default constructor. You can override the default
+(no input parameters) or overload the constructor to allow the user to set the new instance 
+to a valid state.
+
+
+Naming Conventions for Identifiers (CS-ASP_044)
+===============================================
+PascalCase - public 
+camelCase - private, protected
+
+PascalCase - Public classes, methods, and properties
+camelCase - Private helper methods, input parameters - camelCase
+Locally scoped variables - camelCase
+Private field - camelCase prefixed w/ underscore: _firstName
+
+Choose long, memorable, understandable names that convey meaning/intent
+
+
+Static vs. Instance Members (CS-ASP_045)
+========================================
+Static members - no instance of class required to call method
+
+Instance members - must create an instance w/ new keyword to call methods and properties
+
+Can mix both in same class, but can't reference instance members from inside of static members.
+
+Classes can be decorated w/ static keyword - all members must be static, can't create a new instance of that class.
+
+System.Math
+
+http://v.gd/static
+
+
+Working with List Collection (CS-ASP_046)
+========================================
+Use Generic Collections to work with items in a strongly typed fashion.
+
+Better than arrays:
+- Know they type of the item for certain, no casting/converting of member
+- Better performance inserting/removing/updating
+- Collections provide more flexible options to access items in the collection.
+- Allows for LINQ extention methods
+
+Many different collections - specialties
+
+"Generic Collections"
+List<T>
+Dictionary<TKey, TValue>
+T => data Type you need
+"You make a generic specific by providing a data type."
+
+List<string> - now can only store strings (strongly typed)
+List<Car> - now you can only store Cars in that collection
+
+// Assume I have 3 objects: car1, car2, car3
+List<Car> cars = new List<Car>();
+cars.Add(car1);
+cars.Add(car2);
+cars.Add(car3);
+
+int numberOfCars = cars.Count;
+Car myCar = cars.ElementAt(1);	// Returns 2nd car in collection
+
+// Terminology: You access a MEMBER of a collection and an ELEMENT of an array
+
+// LINQ queries
+
+Object Initializers (CS-ASP_047)
+================================
+Concise way to initialize a new object (or collection) w/ values.
+
+// Didn't talk about this form:
+
+Car car1 = new Car() { Make = "BMW", Model = "528i", Year =2010, Color = "Black" };
+
+// No local variable name for the new Car instance needed!
+cars.Add(new Car() { Make = "BMW", Model = "528i", Year =2010, Color = "Black" });
+
+
+Collection Initializers (CS-ASP_048)
+====================================
+Shortcut to create new instance of generic collection and initialize it by IMMEDIATELY
+adding new instances of a given type.
+
+List<Car> cars = new List<Car>() {
+	new Car{ Make = "BMW", Model = "528i", Year =2010, Color = "Black" },
+	new Car{ Make = "BMW", Model = "M8", Year =2015, Color = "Black" },
+	new Car{ Make = "BMW", Model = "Z8", Year =2003, Color = "Black" },
+};
+
+
+Workey w/ the Dictionary<TKey, TValue> Collection (CS-ASP_049)
+==============================================================
+Dictionary allows you to use a key to access a member of the collection.
+Think: Webster's dictionary ... the word (key) and the defintion (instance of given type)
+
+Key is anything meaningful in YOUR system.
+A key MUST BE unique.
+
+TKey => type of key
+TValue => type of the value
+
+Dictionary<string, Car> cars = new Dictionary<string, Car>();
+cars.Add("V123", new Car{ Make = "BMW", Model = "528i", Year =2010, Color = "Black" });
+cars.Add("V234", new Car{ Make = "Toyota", Model = "528i", Year =2010, Color = "Black" });
+cars.Add("V345", new Car{ Make = "Lexus", Model = "528i", Year =2010, Color = "Black" });
+
+cars.ElementAt(1).Key // Returns "V234" (the key value in the 2nd position)
+cars.ElementAt(1).Value // Returns the Car object in the 2nd position
+
+
+/// Better way to access the dictionary ... 
+Car v2;
+
+// Makes sure there is a key "V234", and then obtains specified car 
+// and stores it into out parameter v2. Otherwise, it won't retrieve anything
+if (cars.TryGetValue("V234", out v2))
+{
+	result += v2.Year;
+}
+
+
+// Remove
+if (cars.Remove("V345")) {	// Removes specific car based on key
+	result += "Successfully removed car.";
+}
+
+
+
+Looping w/ the foreach Iteration Statement (CS-ASP_050)
+=======================================================
+More elegant way of iterating through collections.
+
+Code snippet: foreach [tab][tab]
+
+foreach (Car car in cars) {
+	result += car.Make;
+}
+
+
+Implicitly Typed Local Variables with the var Keyword (CS-ASP_051)
+==================================================================
+(Applies to locally scoped variable declarations)
+Compiler is smart enough to figure out the data type when you initialize the variable.
+Becomes increasingly important because sometimes it's difficult to know what the data 
+type is supposed to be. (LINQ)
+
+int hitPoints = 0;
+... is the equivalent of ...
+var hitPoints = 0;
+
+string heroName = "Pentagorn";
+... is the equivalent of ...
+var heroName = "Pentagorn"
+
+var Cars = new List<Car>() {
+...
+}
+
+Rules:
+1. Must initialize the variable.
+2. Variable is permanently set to the implicit data type.
+3. Can't be use for a PUBLIC property / variable
+
+
+Creating GUIDs (CS-ASP_052)
+===========================
+Globally Unique Identifiers
+
+System.Guid newGuid = System.Guid.NewGuid();
+
+
+Working with Enumberations (CS-ASP_053)
+=======================================
+Data type accepting only enumberated values that you define. Strongly typed, ridding your app of "magic strings". 
+
+public enum Occupation {
+	Doctor,
+	Lawyer, 
+	IndianChief
+}
+
+Occupation occupation; 
+if (Enum.TryParse("Doctor", out occupation)) {
+	...
+}
+
+
+Creating Constants with the const Keyword (CS-ASP_053b)
+=======================================================
+Remove magic values (string, integers, etc.) using permanent, immutable identifiers.
+
+Only use things that NEVER change - not for product prices, etc.
+Define const at local or field.
+
+const double valueOfPi = 3.14;
+
+
+Understanding the switch Statement (CS-ASP_054)
+===============================================
+Think: train switch... logic based on evaluation of a variable or property value.
+
+switch (whatIDo) {
+	case Occupation.Doctor
+		...
+		break;
+	case Occupation.IndianChief
+	case Occupation.Lawyer
+		...
+		goto case Occupation.Doctor;
+	default:
+		...
+		break;
+}
+
+First Pass at the Separation of Concerns Principle (CS-ASP_055)
+===============================================================
+Separate concerns to mitigate impact of change on a software system.
+
+Common "concerns":
+- Presentation Logical
+- Business/Domain logic
+- Persistence logic
+
+Recommendation: Separate concerns into projects within a given solution.
+
+Naming Convention:
+MyApplicatioin (Solution name)
+-- MyApplication.Presentation (.Web, etc. presentation project)
+-- MyApplication.Domain (domain / business rules project)
+-- MyApplication.Persistence (.Data, .DB persistence project)
+
+Understanding Exception Handling (CS-ASP_056)
+=============================================
+Wrap try...catch around code:
+- That you are calling into, that you didn't write
+- Code that accesses external resources 
+- Code that accepts input from other sources
+
+try {
+
+}
+catch (SpecificException ex) {
+	// Catch more specific exceptions first
+	// More general last
+}
+catch (Exception ex) {
+	// log it
+	// Swallow it? Do nothing to it
+	// Rethrow it
+}
+finally {
+	// optional... clean up
+}
+
+
+Understanding Global Exception Handling (CS-ASP_057)
+====================================================
+Unhandled exception bubbles up until they are exposed to the end user (aka "yellow screen of death")
+
+Best place to handle exceptions is the nearest locale to the exception itself.
+However, you CAN handle it globally.
+
+In global.asax
+
+Add:
+
+	void Application_Error(object sender, EventArgs e)
+	{
+		// Ask what just happened?
+		Exception ex = Server.GetLastError();
+
+		// ex will ALWAYS be of type HttpUnhandledException. To get to the exception that CAUSED
+		// that to happen, you'll need to look at the ex.InnerException
+		var innerException = ex.InnerException;
+
+		// Handle a specific type of error differently.
+		if (innerException.GetType() == typeof(ArgumentOutOfRangeException))
+		{
+			Server.Transfer("Error.aspx");
+		}
+
+		// YOU MUST DO THIS if you want to hide the yellow page of death, any existing exceptions after this point
+		// will send the end user the exception page
+		Server.ClearError();
+	}
+
+Understanding Custom Exceptions (CS-ASP_058)
+============================================
+Inherit from Exception like so:
+
+public class MyCustomException : Exception // Inheritance
+{ ... }
+
+
+Creating a Database in Visual Studio 2013 (CS-ASP_059)
+======================================================
+LocalDb - Local dev-only version of SQL Server
+
+Project > Add New Item.. > Installed > Data > SQL Server Database
+
+Creates a .mdf file
+
+SQL Server Data Tools (SSDT) - Tools to create and manage SQL Server databases from Visual Studio.
+
+
+Creating an Entity Model in Visual Studio 2015 (CS-ASP_060)
+===========================================================
+Entity Data Model - Object-Relational Mapper to treat database tables w/ columns as classes w/ properties
+
+Project > Add New Item.. > Installed > Data > ADO.NET Entity Data Model > Entity Data Model Wizard > EF Designer from Database > Connection > Database Objects
+
+
+DbContext == Handle to the entity model > database
+DbSet == Collection of all entities in the DbContext
+
+	ACMEEntities db = new ACMEEntities();
+	var dbCustomers = db.Customers;
+	
+
+Displaying the DbSet Result in an ASP.NET GridView (CS-ASP_061)
+===============================================================
+GridView Server Control - Databinds to enumberable collections of objects and renders in a tabular formattingcurrency
+
+MUST CALL ToList() on a DbSet to bind to a databound control.
+
+gridControl.DataSource = dbCustomers.ToList();
+gridControl.DataBind();		// DataBind gives it presentation format
+
+
+Implementing a Button Command in a Gridview (CS-ASP_062)
+========================================================
+Click Chevron => GridView Tasks -> Edit Columns...
+
+BoundField - Databind to an object property
+ButtonField - Hyperlink button
+
+Handle button click in the GridView_RowCommand event handler.
+
+protected void GridView1_RowCommand(object sender, GridViewCommanEventArgs e){
+	
+	// Retrieve the ROW THAT IS CLICKED ON in the grid
+	
+	int index = Convert.ToInt32(e.CommandArgument);
+	GridViewRow row = GridView1.Rows[index];	// Each index is one row
+	
+	// Accessing cells is risky because the order of the columns may change over time!
+	// (and you might forget that this code depends on it!)
+	// Also... 0 based!
+	
+	var someValue = row.Cells[1].Text;	// Convert to anything you want
+}
+
+
+Using a Tools-Centric Approach to Building a Database Application (CS-ASP_063)
+==============================================================================
+Tools-centric: Use VS's designers, tools, etc. to build applications w/ minimal code.
+
+Great for small, departmental apps w/ very little business logic, change is not anticipated and there's a tight timeframe
+
+
+Using a Maintenance-Centric Approach to Building a Database Application (CS-ASP_064)
+====================================================================================
+Maintenance-Centric: Anticipate change, mitigate its negative effects on software by separating concerns, applying unit testing, etc.
+
+Great for larger, enterprise scale apps with many business rules, where change is anticipated because it is crucial to the operation of the business and there's a longer development timeframe.
+
+DTO - Data Transfer Object -- Model used for transferring from one layer to another to avoid a leaky abstraction.
+Ex: I don't want Entity Framework leaking out of the persistence because
+other layers would be dependent on it! BAD!
+
+
+Creating a New Instance of an Entity and Persisting to the Database (CS-ASP_065)
+================================================================================
+
+var customer = new Customer();
+// Populate properties of customer
+dbCustomers.Add(customer);
+db.SaveChanges();		// Will commit changes
+
+Filtering DbSets using LINQ method syntax:
+
+ACMEEntities db = new ACMEEntities();
+var dbCustomers = db.Customers.OrderBy(p => p.Name).ToList();
+
+.Where(p => p.Name == "Bob").ToList();	// Will filter out everyone else besides people named "Bob"
+
+Lambda Expression - "mini methods"
+
+
+Package Management with NuGet (CS-ASP_066)
+===========================================
+Package Manager - installs files, folders, adds references to third party
+packages supplying common functionality.
+
+Adds dependencies.
+Updates packages and dependencies.
+
+// Manage NuGet Packages Dialog
+Tools > NuGet Package Manager > Manage NuGet Packages for Solution ... >
+
+// Package Manager Console
+Tools > NuGet Package Manager > Package Manager Console
+
+Install-Package elmah
+Update-Package elmah
+
+packages.config file keeps track of packages, dependencies and versions.
+
+
+NuGet No-Commit Workflow (CS-ASP_067)
+======================================
+To restore deleted packages at comppile:
+
+Solution Explorer > Right-click Solution > Enable NuGet Package Restore
+
+Adds a .nuget folder in the project.
+
+Or, go to the Manage NuGet Packages dialog and click the Restore button at
+
+the top (yellow area).
+
+
+Introduction to the Twitter Bootstrap CSS Framework (CS-ASP_068)
+==================================================================
+
+Add:
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="Scripts/jquery-2.1.3.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+
+Complete Reference:
+http://getbootstrap.com/css/
+
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-sm-6 col-xs-8">
+
+<div class="form-group">
+<label>TextBox: </label>
+<asp:TextBox ID="testTextBox" runat="server" CssClass="form-control">
+
+<asp:Button ID="testButton" runat="server" Text="Test" CssClass="btn btn-lg
+
+btn-primary" />
+
+
+Mapping Enum Types to Entity Properties in the Entity Framework Designer (CS-ASP_069)
+=====================================================================================
+Enums have implicit numeric indices
+
+public enum BallType {
+Baseball = 0,
+Basketball = 1,
+Football = 2
+}
+
+You can change the "seed":
+
+// Implies 1, 2, 3 when you do this
+public enum BallType {
+Baseball = 1,
+Basketball,
+Football
+}
+
+The Entity Framework Designer maps enums to int data types.
+
+In Entity Data Model diagram (edmx)
+- Right-click Column
+- Select Convert to Enum
+- In the Add Enum Type dialog, either:
+-- Select Reference external type, enter namespace + type, or...
+-- Enter Enum Type Name, enter Members and optional Values
+
+
+Deploying the App to Microsoft Azure App Services Web Apps (CS-ASP_070)
+=======================================================================
+Solution Explorer > Right-click Project Name > Publish ...
+
+MAKE SURE TO DELETE THE PUBLISHSETTINGS FOLDER BEFORE DISTRIBUTING YOUR SOURCE CODE TO OTHERS!!!
