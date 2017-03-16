@@ -1,7 +1,53 @@
-﻿
+﻿@model List<MVCExample.Models.Car>
+
+<!-- Code block-->
 @{
     ViewBag.Title = "Index";
+    var value = 1000;
 }
 
 <h2>Index</h2>
 
+@{ 
+    value += 1; <!--Accessed value from earlier code block-->
+}
+
+@{ 
+    var name = "Michael";
+    var day = DateTime.Now.DayOfWeek.ToString();
+
+    <p>Howdy, @name. Today is @day</p>
+}
+
+<p>Value: @value.ToString("C")</p>
+
+@foreach (var car in Model)
+{
+    <p>@car.Id  - @car.Make  - @car.Model</p>
+}
+
+@helper pluralizeChildren(int childCount) { 
+    var result = childCount == 1 ? "child" : "children";
+}
+
+@{ 
+    var childCount = 2;
+    <p>I have @childCount @pluralizeChildren(childCount)</p>
+}
+
+@* This is a comment *@
+
+<p>
+    @{ 
+        var test = false;
+        if (!test)
+        {
+            @:Display this!     @*Use this to immediately jump to HTML*@
+            <span>HIYA BLAH BLAH BLAH</span>
+        }
+    }
+</p>
+
+
+<p>@@michaellu</p>  @* Use another @ to escape a razor tag
+                       Can also use @ to escape a C# keyword*@

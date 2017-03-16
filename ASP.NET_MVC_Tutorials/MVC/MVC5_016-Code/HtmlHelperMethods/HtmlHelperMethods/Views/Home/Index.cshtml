@@ -1,0 +1,58 @@
+﻿@model HtmlHelperMethods.Models.Book
+@{
+    ViewBag.Title = "Index";
+
+    List<SelectListItem> categories = (List<SelectListItem>)ViewBag.Categories;
+  
+}
+
+<h2>Index</h2>
+
+@* Post back to action called index, on the home controller, using Form method *@
+@using (Html.BeginForm("Index", "Home", FormMethod.Post)) 
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.Title)
+        @Html.TextBoxFor(p => p.Title, new { @class = "form-control" }) @* Create textbox for Title attribute and add bootstrap form-control attribute *@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.CopiesSold)   @* Copies sold is just an integer*@
+        @Html.EditorFor(p => p.CopiesSold, new {  @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.YearPublished)
+        @Html.DropDownListFor(p => p.YearPublished, new SelectList(
+        new List<Object>
+        {
+            new { text = 2010 },
+            new { text = 2011 },
+            new { text = 2012 },
+            new { text = 2013 },
+            new { text = 2014 },
+            new { text = 2015 },
+            new { text = 2016 },
+            new { text = 2017 }
+        }, "text", "text", 2015),   @* Use the "text" value both for display AND value purposes. 2015 is default value *@
+            new { @class = "form-control" })
+    </div>
+   
+    <div class="form-group">
+        @Html.LabelFor(p => p.Category)
+        @Html.ListBoxFor(p => p.Category, categories, new {  @class = "form-control" }) @* Create listbox with the categories *@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Genre)
+        @Html.EnumDropDownListFor(p => p.Genre, "Choose one...", new { @class = "form-control" }) @* Create listbox with the categories *@
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+    
+
+
+}
+
