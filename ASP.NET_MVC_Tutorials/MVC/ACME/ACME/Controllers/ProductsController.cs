@@ -64,10 +64,10 @@ namespace ACME.Controllers
 
             if (ModelState.IsValid)
             {
-                product.ProductId = Guid.NewGuid();
+                product.ProductId = Guid.NewGuid(); 
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index");   // Redirect to the Index action (you can redirect to any action w/in the same                                              controller        
             }
            
 

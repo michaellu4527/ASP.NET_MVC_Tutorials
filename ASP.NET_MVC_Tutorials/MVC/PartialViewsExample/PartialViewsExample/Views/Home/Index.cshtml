@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PartialViewsExample.Models.Product>
+﻿@model IEnumerable<PartialViewsExample.Models.Product>  
 @{
     ViewBag.Title = "Index";
 
@@ -10,6 +10,7 @@
 <div class="row">
     @foreach (var product in Model)
     {
+        // 2 Methods: RenderPartial and Partial
         //Html.RenderPartial("~/Views/Shared/_ProductDetails.cshtml", product);
         productString += Html.Partial("~/Views/Shared/_ProductDetails.cshtml", product);
     }

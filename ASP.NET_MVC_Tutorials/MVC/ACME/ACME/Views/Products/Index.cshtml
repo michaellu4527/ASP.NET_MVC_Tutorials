@@ -9,7 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")<br />
 
-    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new {  data-toggle = "tooltip", data-placement = "right", title = "Click here to create a new product" })
+    @* Must use underscores instead of hyphens for attributes in C# *@
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new {  data_toggle = "tooltip", data_placement = "right", title = "Click here to create a new product" })
 
     @Html.ActionLink("Create V3", "Create", new RouteValueDictionary(new { locale = "en-US", year = DateTime.Now.Year.ToString() }))
 

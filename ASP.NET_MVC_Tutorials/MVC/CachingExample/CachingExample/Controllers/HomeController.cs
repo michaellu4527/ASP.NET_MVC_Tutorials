@@ -10,6 +10,8 @@ namespace CachingExample.Controllers
     {
         // GET: Home
 
+        // * means vary by every parameter
+        // NoStore means the server should NOT store a permanent copy of the cached content. This means that the content will have to be re-exectuted each time it is requested as the cache isn't allowed to store it.
         [OutputCache(Duration = 10, VaryByParam="*", Location=System.Web.UI.OutputCacheLocation.Any, NoStore=true)]
         public ActionResult Index()
         {
@@ -17,7 +19,7 @@ namespace CachingExample.Controllers
             return View();
         }
 
-        
+        [OutputCache(Duration = 10)]    // Will wait 10 seconds before running the code again (uses cached in downtime)
         public ActionResult DonutHoleCache()
         {
           ViewBag.LastExecutedDateTime = DateTime.Now.ToString("hh:mm:ss.fff");

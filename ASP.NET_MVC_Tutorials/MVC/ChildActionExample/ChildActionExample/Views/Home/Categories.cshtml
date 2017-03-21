@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ChildActionExample.Models.Category>
+﻿@* Categories partial view *@
+
+@model IEnumerable<ChildActionExample.Models.Category>
 <div class="col-sm-4 col-md-3 sidebar">
     <div class="mini-submenu">
         <span class="icon-bar"></span>
@@ -15,6 +17,7 @@
 
         @foreach (var category in @Model)
         {
+            @* Displaying category name, number of products, and a link to it *@
             <a href="/Category/@category.CategoryId" class="list-group-item">
                 <i class="fa fa-angle-double-right"></i> @category.Name <span class="badge">@category.Items</span>
             </a>

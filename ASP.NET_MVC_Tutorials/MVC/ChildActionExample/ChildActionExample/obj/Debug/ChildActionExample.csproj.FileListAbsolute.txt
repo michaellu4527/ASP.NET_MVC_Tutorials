@@ -34,3 +34,22 @@ E:\OneDrive\Documents\Visual Studio 2013\Projects\ChildActionExample\ChildAction
 E:\OneDrive\Documents\Visual Studio 2013\Projects\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.csprojResolveAssemblyReference.cache
 E:\OneDrive\Documents\Visual Studio 2013\Projects\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.dll
 E:\OneDrive\Documents\Visual Studio 2013\Projects\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.pdb
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\ChildActionExample.dll.config
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\ChildActionExample.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\ChildActionExample.pdb
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Helpers.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Mvc.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Razor.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.Razor.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Razor.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Webpages.Razor.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Helpers.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\bin\System.Web.Mvc.xml
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.csprojResolveAssemblyReference.cache
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.dll
+C:\Users\Student\Documents\10 C#\csharp3\ASP.NET_MVC_Tutorials\ASP.NET_MVC_Tutorials\MVC\ChildActionExample\ChildActionExample\obj\Debug\ChildActionExample.pdb
