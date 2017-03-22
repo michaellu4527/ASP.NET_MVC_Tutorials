@@ -16,6 +16,8 @@ namespace CustomRoutesExample
 
             // I'm counting on the CategoriesByOrdinal route to handle the /Categories/Widgets case ...
             // This one should only handle the /Categories/Widgets/Detail-2
+
+            // This allows multiple products to share the same ID as long as they are of a different category
             routes.MapRoute(
                 name: "CategoriesById",
                 url: "Categories/{category}/Detail-{id}",
@@ -32,6 +34,7 @@ namespace CustomRoutesExample
                 new { controller = "blog", action = "index" },
                 new { year = @"\d{4}", month = @"\d{2}", day = @"\d{2}" });
 
+            // Default route that is only defined in this RouteConfig file
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}-{action}/{id}",
